@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+  <title>Glide.js Vertical Example</title>
+  <link rel="stylesheet" type="text/css" href="../includes/styles/bootstrap_custom.css">
+  <link rel="stylesheet" type="text/css" href="../includes/styles/glide.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="../includes/js/glide.js"></script>
+  <style type="text/css">
+    body {
+      font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    }
+
+    #vertical_slider
+    {
+      width: 500px;
+      height: 500px;
+      margin: 30px auto 0;
+      margin-bottom: 10px;
+      border: 5px solid royalblue;
+      box-shadow: 0px 2px 6px #333;
+      border-radius: 3px;
+    }
+
+    .slider_container
+    {
+      width: 500px;
+      height: 500px;
+    }
+
+    .glide-pagination {
+      margin-top: 8px;
+    }
+
+    .example_code
+    {
+      width: 500px;
+      display: none;
+    }
+
+    .source
+    {
+      width: 500px;
+      margin: 30px auto 0;
+      font-family: 'Helvetica Neue';
+    }
+
+    .button_wrap
+    {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .footer {
+      width: 800px;
+      margin: 0 auto;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: steelblue;
+      -webkit-transition: none;
+      -moz-transition: none;
+      -ms-transition: none;
+      -o-transition: none;
+      transition: none;
+    }
+
+    .footer a:hover {
+      color: #0E5C9E;
+      text-decoration: underline;
+      background-color: transparent;
+    }
+
+    .footer p {
+      font-size: 12px;
+      margin: 0 0 5px 0 !important;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="vertical_slider">
+    <div class="slider_container">
+      <img src="../includes/imgs/vertical_img.jpg" />
+      <img src="../includes/imgs/vertical_img2.jpg" />
+      <img src="../includes/imgs/vertical_img3.jpg" />
+      <img src="../includes/imgs/vertical_img4.jpg" />
+    </div>
+  </div>
+    <div class="source">
+      <div class="button_wrap">
+        <a href="#" class="btn toggle_source">View Source</a>
+      </div>
+    <pre class="example_code">
+      <code>
+&lt;!doctype html&gt;
+<span class="tag">&lt;html&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+  <span class="tag">&lt;style</span> <span class="attribute">type</span>="text/css"<span class="tag">&gt;</span>
+    #vertical_slider
+    {
+      width: 500px;
+      height: 500px;
+      margin: 30px auto 0;
+      border: 4px solid royalblue;
+      box-shadow: 0px 2px 6px #333;
+    }
+
+    .slider_container
+    {
+      width: 100%;
+      height: inherit;
+      margin-bottom: 10px;
+    }
+  <span class="tag">&lt;/style&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+  <span class="tag">&lt;div</span> <span class="attribute">id</span>="vertical_slider"<span class="tag">&gt;</span>
+    <span class="tag">&lt;</span>div <span class="attribute">class</span>="slider_container"<span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attribute">src</span>="imgs/vertical_img.jpg" /<span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attribute">src</span>="imgs/vertical_img2.jpg" /<span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attribute">src</span>="imgs/vertical_img3.jpg" /<span class="tag">&gt;</span>
+      <span class="tag">&lt;img</span> <span class="attribute">src</span>="imgs/vertical_img4.jpg" /<span class="tag">&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;/div&gt;</span>
+  <span class="tag">&lt;script</span> <span class="attribute">type</span>="text/javascript"<span class="tag">&gt;</span>
+    $('#vertical_slider').glide({
+      preload: true,
+      orientation: 'vertical',
+      autoPlay: 3000
+    });
+  <span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+      </code>
+    </pre>
+  </div>
+  <div class="footer">
+    <p>For full documentation, go to <a href="http://chrisbenincasa.github.com/glide.js">http://chrisbenincasa.github.com/glide.js/</a></p>
+    <p>&copy; 2012 <a href="http://chrisbenincasa.com">Christian Benincasa</a>. All rights reserved. Glide.js is licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License</a></p>
+  </div>
+  <script type="text/javascript">
+    var slider = $('#vertical_slider').glide({
+      preload: true,
+      orientation: 'vertical',
+      autoPlay: 3000
+    });
+
+    $('.toggle_source').click(function(e){
+      e.preventDefault();
+      $('pre').slideToggle();
+      if($(this).hasClass('open'))
+      {
+        $(this).removeClass('open').text('View Source');
+      } else {
+        $(this).addClass('open').text('Hide Source');
+      } 
+    });
+  </script>
+</body>
+</html>

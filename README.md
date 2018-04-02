@@ -1,45 +1,132 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+# jQuery Full Width Image Slider
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+A jQuery full width slider designed to be as compatible and lightweight as possible. Minified (JS & CSS) it weighs in at just 4.1KB (~1.8KB gzipped).
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+Features:
 
----
+* Total minified size - 4.1KB minified (~1.8KB gzipped)
+* Fully Responsive
+* CSS3 Transitions with jQuery `.animate()` fallback 
+* Keeps images vertically centered
+* Two custom events - `fws.start`, `fws.finish` 
+* Supports keyboard navigation
+* Supports captions
+* Resizes caption font for best viewing experience
+* Multiple options
+* Tested with:
+	* Chrome 22-44 (OSX)
+	* Safari 6-8.0.3 (OSX)
+	* Firefox 16-40 (OSX)
+	* iPad Safari (6.1-8.3)
+	* iPhone Safari (6.1-8.3)
+	* IE6 - works but no transparency
+	* IE7-IE10 - works well
 
-## Edit a file
+#Important
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+If you require compatibility with IE8 and below then make sure you're using this IE detection method:
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+```html
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+```
 
----
 
-## Create a file
+##Usage:
 
-Next, you’ll add a new file to this repository.
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+Include `slider.css` or `slider.min.css` and use the following html structure:
 
----
+```html
+<div class="full-width">
+	<div class="inner">
+		<div class="slide">
+			<div>
+				Lorem ipsum dolor sit amet, consectetur. <br>
+				Curabitur molestie elit et ultricies vehicula.
+			</div>
+			<img src="http://lorempixel.com/1020/400/sports" width="1020" height="400">
+		</div>
+		<div class="slide">
+			<!-- Caption can be omitted without any change in functionality -->
+			<img src="http://lorempixel.com/1020/400/cats" width="1020" height="400">
+		</div>
+	</div>
+	<div class="controls">
+		<a href="#" class="left">&lt;</a>
+		<a href="#" class="right">&gt;</a>
+	</div>
+	<div class="slide-nav"></div>
+</div>
+```
 
-## Clone a repository
+Then include `slider.js` or `slider.min.js` and initialise it using:
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+```javascript
+$('.full-width').fullWidth();
+```
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+The script automatically adds a CSS class to each slide in this format: `slide-1`, `slide-2`, `slide-3` etc. These allow you to specifically target slides if you need to add custom styles.
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+There are two custom events - one that's fired before a slide moves and one that's fired when the slide has stopped moving. These events are triggered on the slider wrapper, in the demo this is `.full-width`. Here's the example code from the demo page:
+
+```javascript
+$('.full-width').on('fws.start', function(e, data){
+    /*
+    'data' is an object with the following structure:
+    {
+    	status: {
+    		current: 0, // current slide number
+    		previous: 0, // previous slide number
+    		max: 0 // slide count
+    	},
+    	direction: '' // left, right or direct
+    }
+    */
+})
+.on('fws.finish', function(e, data){
+    /*
+    'data' has the same structure as the data object in `fws.move` but without the direction property
+    */
+});
+```
+
+ 
+##Options:
+
+```javascript
+$(selector).fullWidth({
+	maxHeight	:	450, // maximum height of slider, px
+	minHeight	:	375, // minimum height of slider, px
+	delay		:	5000, // delay between slides, ms
+	transition	:	1000, // transition speed, ms
+	maxFont		:	36, // maximum font size, px
+	minFont		:	24 // minimum font size, px
+});
+```	
+## License 
+
+The MIT License (MIT)
+
+Copyright (c) 2013 Joseph Bonham
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
