@@ -4,7 +4,7 @@ session_start();
 
 <SCRIPT TYPE="text/javascript">
 
-function popup(mylink, windowname)
+function popup(mylink, windowname, w, h)
 {
 if (! window.focus)return true;
 var href;
@@ -12,7 +12,8 @@ if (typeof(mylink) == 'string')
    href=mylink;
 else
    href=mylink.href;
-window.open(href, windowname, 'width=500,height=300,scrollbars=yes');
+myWindow=window.open(href, windowname, "width="+w+",height="+h+",scrollbars=yes" );
+myWindow.document.bgcolor="#e74c3c";
 return false;
 }
 
@@ -20,20 +21,22 @@ return false;
 
 <div class="wrapper4 row2">
   <br/>
-<h3><font color="#252222">SWISSPORT ID </font></h3>
-    <div class="wrapper2 row3">
-</div>
-    <div class="wrapper1">
-<?php
+  <?php
 $mutmatrix= array();
 $swiss_id=$_POST["swiss_id"];
 //echo $protein_seq;
 $swiss_id2=trim($swiss_id);
+?>
+<h3><font color="# ">SWISSPORT ID : &nbsp;&nbsp;<font color=" #e74c3c"><?php echo $swiss_id2; ?></font></font></h3>
+    <div class="wrapper2 row3">
+</div>
+    <div class="wrapper1">
+<?php
 $inp=$swiss_id2.".out";
-echo $inp;
+//echo $inp;
 $inp_swiss_file="Data_for_Db/".$inp;
 $fileopen=@fopen("$inp_swiss_file", "r") or die("Unable to open file!");
-echo $inp_swiss_file;
+//echo $inp_swiss_file;
 //echo fgets($fileopen);
 //$data = file_get_contents('$fileopen', true);
 //foreach(file($fileopen) as $line) {
@@ -47,7 +50,7 @@ $mutmatrix[] = fgets($fileopen);
 //$splitmatrix=preg_split("/[\t]/", $mutmatrix[0];
 }
 $length= count($mutmatrix);
-echo $length;
+//echo $length;
     ?>
     <br/>
     <?php
@@ -65,10 +68,9 @@ $i=0;
         <tr>
           <th class="zui-sticky-col">
     
-<!--<div class="sidetable">-->
-<br/>Sequence<br/><br/>
-<!--</div>
-<div class="valuesgap">-->A<br/>
+
+Sequence<br/><br/><br/>
+A<br/>
 C<br/>
 D<br/>
 E<br/>
@@ -117,16 +119,13 @@ $y=$i+19;
 //echo $i;
 //echo $y;
 for ($x = $i; $x <= $y; $x++) {
-  //print $mutmatrix[$i];
-?>
-
-<?php
 $splitmatrix2=explode("\t", $mutmatrix[$x]);
-    if ($splitmatrix2[14]==1){
+    if ($splitmatrix2[12]==0){
+       
 ?>
 <br/>
-<a href="swisspopup.php?id=<?php echo $swiss_id2 ; ?>_<?php echo $splitmatrix2[2] ; ?>_<?php echo $splitmatrix2[3] ; ?>"  style="text-decoration:none;" onClick="return popup(this, 'output data')"><span  style="background-color: #FF0000;" ><B>
-    <div class="circleR">
+<a href="swisspopup.php?id=<?php echo $swiss_id2 ; ?>_<?php echo $splitmatrix2[2] ; ?>_<?php echo $splitmatrix2[3] ; ?>" onClick="return popup(this, 'output data', '400', '500')"><span  style="background-color: #00ff00;" ><B>
+    <div class="circleG">
     
 <?php //echo   $splitmatrix2[3];
 ?>
@@ -135,11 +134,12 @@ $splitmatrix2=explode("\t", $mutmatrix[$x]);
 
     <?php
 }
-    elseif ($splitmatrix2[14]==0){
+    elseif ($splitmatrix2[12]==1){
+
 ?>
 <br/>
-<a href="swisspopup.php?id=<?php echo $swiss_id2 ; ?>_<?php echo $splitmatrix2[2] ; ?>_<?php echo $splitmatrix2[3] ; ?>"  onClick="return popup(this, 'output data')"><span  style="background-color: #00ff00; "><B>
-    <div class="circleG">
+<a href="swisspopup.php?id=<?php echo $swiss_id2 ; ?>_<?php echo $splitmatrix2[2] ; ?>_<?php echo $splitmatrix2[3] ; ?>"  onClick="return popup(this, 'output data', '400', '500')"><span  style="background-color: #FF0000; "><B>
+    <div class="circleR">
  <?php //echo   $splitmatrix2[3]; ?> 
         </div>   </B></span></a> 
     <?php
@@ -149,7 +149,7 @@ else {
 <br/>  
     <?php
 echo   $splitmatrix2[3];
-?>         
+?>        
     <?php
 }    
 }
