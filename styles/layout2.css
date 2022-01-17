@@ -162,7 +162,7 @@ table tr td {vertical-align: top;
   table.boxes1{
     border: 1px solid black;
     table-layout: fixed;
-    width: 200px;
+    width: 100px;
 }
 table.boxes2{
     border: 1px solid black;
@@ -190,8 +190,8 @@ footer2 {display:block;  width:100%; height:20px; color:#444444; background-colo
 address, article, aside, figcaption, figure, header, footer, section{display:block;  margin:0; padding:0;}
 
 q{display:block; padding:0 10px 8px 10px; color:#444444; background-color:#ECECEC; font-style:italic; line-height:normal;}
-q:before{content:'“ '; font-size:26px;}
-q:after{content:' „'; font-size:26px; line-height:0;}
+q:before{content:'ï¿½ '; font-size:26px;}
+q:after{content:' ï¿½'; font-size:26px; line-height:0;}
 
 /*---------------------corner----------------------*/
 .rcorners1 {
@@ -206,8 +206,8 @@ q:after{content:' „'; font-size:26px; line-height:0;}
 }
 /* ----------------------------------------------Wrapper-------------------------------------*/
 
-div.wrapper{display:block; width:960px; margin:0 auto; padding:0; text-align:left;}
-div.wrapper1{display:block; width:860px; margin:2px auto; padding:0px; text-align:left;}
+div.wrapper{display:block; width: 960px; margin:0 auto; padding:0; text-align:left;}
+div.wrapper1{display:block; width:960px; margin:2px auto; padding:0px; text-align:left;}
 div.wrapper2{display:block; width:900px; margin:2px auto; padding:0px; text-align:center;}
 div.wrapper4{display:block; width:900px; margin:2px auto; padding:0px; text-align:left;}
 div.wrapper3{display:block; width:360px; margin:2px auto; padding:0px; text-align:left;}
@@ -233,8 +233,8 @@ h5{font-size:14px; font-weight:normal; line-height:0;}h6{font-size:16px}
 address{font-style:normal;}
 
 blockquote, q{display:block; padding:8px 10px; color:#444444; background-color:#ECECEC; font-style:italic; line-height:normal;}
-blockquote:before, q:before{content:'“ '; font-size:26px;}
-blockquote:after, q:after{content:' „'; font-size:26px; line-height:0;}
+blockquote:before, q:before{content:'ï¿½ '; font-size:26px;}
+blockquote:after, q:after{content:' ï¿½'; font-size:26px; line-height:0;}
 
 .one_third, .two_third, .three_third {display:block; float:left; margin:0px 0px 0 0;}
 .halfpage{display:block; float:left; margin:10px 20px 20px 20px;}

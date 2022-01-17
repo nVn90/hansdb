@@ -1,16 +1,15 @@
+<title>Methodology | HANS Database</title>
+<?php include( "design/header.html"); ?>
 
-<?php include("design/header.html"); ?>
+<body>
+	<?php include( "design/main-navigation.php"); ?>
+	<header class="main-header">
+		<div class="container">
+			<h3>Useful links</h3>
+		</div>
+	</header>
+	<div class="container"></div>
+	<?php include( "design/footer.html"); ?>
+</body>
 
-<div class="wrapper4 row2">
-  <br/>
-<h3><font color="#252222">Useful links</font></h3>
-    <div class="wrapper2 row3">
-</div>
-     
-
-
-<br/><br/><br/><br/><br/><br/><br/><br/>
-</div></div>
-
-
-<?php include("design/footer.html"); ?>
+</html>

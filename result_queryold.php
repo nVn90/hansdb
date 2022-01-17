@@ -69,10 +69,8 @@ $i=0;
 
 
 <?php
-
 while($i < $length-1) {
 //echo $i;
-
 $splitmatrix=explode("\t", $mutmatrix[$i]);
 ?>
 <td>
@@ -110,7 +108,7 @@ $splitmatrix2=explode("\t", $mutmatrix[$x]);
 <a href="swisspopup.php?id=<?php echo $swiss_id2 ; ?>_<?php echo $splitmatrix2[2] ; ?>_<?php echo $splitmatrix2[3] ; ?>"  onClick="return popup(this, 'output data')"><span  style="background-color: #00ff00; "><B> <?php echo   $splitmatrix2[3]; ?> </B></span></a>
         </div>    
 
-    <?php
+<?php
 }
 else {
 ?>
